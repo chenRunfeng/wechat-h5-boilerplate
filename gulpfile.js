@@ -95,7 +95,7 @@ gulp.task('publish-js', function () {
                 transform: ['partialify'],
                 debug: true
             }))
-        )
+    )
         .pipe(concat('bundle.js'))
         .pipe(gulp.dest('app/dist/javascripts'));
 });
@@ -108,8 +108,8 @@ gulp.task('inject', function () {
         'app/dist/stylesheets/bundle.css',
         'app/dist/javascripts/bundle.js'
     ], {
-        read: false
-    });
+            read: false
+        });
     return target
         .pipe(inject(assets, {
             ignorePath: 'app/dist/',
@@ -141,7 +141,7 @@ gulp.task('watch', function () {
 });
 
 // delete files under app/dist
-gulp.task('clean-files', function(cb) {
+gulp.task('clean-files', function (cb) {
     return del([
         'app/dist/**/*'
     ], cb);
@@ -194,8 +194,8 @@ gulp.task('inject-min', function () {
         'app/dist/stylesheets/bundle.min.css',
         'app/dist/javascripts/bundle.min.js'
     ], {
-        read: false
-    });
+            read: false
+        });
     return target
         .pipe(inject(assets, {
             ignorePath: 'app/dist/',
@@ -216,7 +216,7 @@ gulp.task('del-bundle', function (cb) {
 // run 'minify-css' and 'uglify-js' at the same time
 // inject the minified files to index.html
 // delete unminified files
-gulp.task('prod',  function (cb) {
+gulp.task('prod', function (cb) {
     runSequence(['minify-css', 'uglify-js'], ['inject-min', 'del-bundle'], cb);
 });
 
@@ -227,7 +227,7 @@ gulp.task('prod',  function (cb) {
  ================================================*/
 
 // handle errors
-function errorAlert(error){
+function errorAlert(error) {
     notify.onError({
         title: "Error in plugin '" + error.plugin + "'",
         message: 'Check your terminal',
